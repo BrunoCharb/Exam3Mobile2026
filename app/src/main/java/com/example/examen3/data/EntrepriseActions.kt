@@ -8,8 +8,8 @@ sealed interface EntrepriseActions {
     data object AfficherEquipes: EntrepriseActions
     data class AfficherDetailsEquipe(val id: String) : EntrepriseActions
     data object AfficherFormulaire: EntrepriseActions
-    data object AjouterEmploye: EntrepriseActions
     data class ModifierEmploye(val employe: Employe): EntrepriseActions
+    data object SoumettreFormulaireEmploye: EntrepriseActions
 
     // TODO gérer les champs du formulaire
 

@@ -24,7 +24,7 @@ class EntrepriseViewModel: ViewModel() {
             EntrepriseActions.AfficherEquipes -> afficherListeEquipes()
             EntrepriseActions.AfficherEmployes -> afficherListeEmployes()
             is EntrepriseActions.AfficherDetailsEquipe -> afficherDetailsEquipe(action.id)
-            EntrepriseActions.AjouterEmploye -> ajouterEmploye()
+            EntrepriseActions.SoumettreFormulaireEmploye -> soumettreFormulaire()
             EntrepriseActions.AfficherFormulaire -> afficherFormulaire()
             is EntrepriseActions.ModifierEmploye -> afficherFormulaire(action.employe)
         }
@@ -148,19 +148,11 @@ class EntrepriseViewModel: ViewModel() {
 
     /**
      * TODO : Compléter
-     * Fonction qui gère l'ajout d'un employé dans la base de données.
-     *
+     * Fonction qui gère l'ajout ou la modification d'un employé dans la base de données.
+     * Notez qu'aucun URL n'est attendu pour l'image, il n'est pas nécessaire de l'ajouter
+     * à quelconque endroit dans le code.
      */
-    private fun ajouterEmploye() {
-
-    }
-
-    /**
-     * TODO : Compléter
-     * Fonction qui gère la modification d'un employé dans la base de données.
-     *
-     */
-    private fun modifierEmploye() {
+    private fun soumettreFormulaire() {
 
     }
 }
