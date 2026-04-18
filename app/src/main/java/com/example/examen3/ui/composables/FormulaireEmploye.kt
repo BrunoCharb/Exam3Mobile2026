@@ -148,7 +148,7 @@ fun FormulaireEmploye(
             OutlinedTextField(
                 value = state.equipeChoisie?.nom ?: "Choisir une équipe",
                 onValueChange = {
-                    // TODO gérer le changement d'état du formulaire
+                    // NE PAS AJOUTER DE GESTION ICI
                 },
                 readOnly = true,
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
@@ -162,7 +162,7 @@ fun FormulaireEmploye(
                     DropdownMenuItem(
                         text = { Text(equipe.nom) },
                         onClick = {
-                            // TODO gérer le changement d'état du formulaire
+                            // TODO gérer le changement d'état du formulaire, ne pas toucher à expanded
                             expanded = false
                         }
                     )
