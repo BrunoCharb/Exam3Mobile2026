@@ -1,6 +1,7 @@
 package com.example.examen3.ui.composables
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,10 +25,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
+import com.example.examen3.R
 import com.example.examen3.data.EntrepriseActions
 import com.example.examen3.data.modeles.Employe
 import com.example.examen3.data.modeles.EquipeAvecEmployes
@@ -125,8 +127,11 @@ fun CarteMembreEquipe(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            AsyncImage(
-                model = employe.photoUrl,
+            // TODO afficher l'image de profil correspondant à l'URL reçue de la base de données.
+            //  Conserver contentScale et modifier pour le style
+
+            Image(
+                painter = painterResource(R.drawable.generic_avatar),
                 contentDescription = "${employe.prenom} ${employe.nom}",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
