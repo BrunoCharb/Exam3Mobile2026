@@ -99,10 +99,11 @@ object SupabaseClient {
 
     suspend fun ajouterEmploye(employe: EmployeAjout) {
         // TODO compléter
+        client.from("employes").insert(employe)
     }
 
     suspend fun modifierEmploye(employe: Employe) {
-        // TODO compléter
+        client.from("employes").upsert(employe)
     }
 
 

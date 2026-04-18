@@ -27,6 +27,12 @@ class EntrepriseViewModel: ViewModel() {
             EntrepriseActions.SoumettreFormulaireEmploye -> soumettreFormulaire()
             EntrepriseActions.AfficherFormulaire -> afficherFormulaire()
             is EntrepriseActions.ModifierEmploye -> afficherFormulaire(action.employe)
+            is EntrepriseActions.ModifierChampPrenom -> modifierPrenom(action.prenom)
+            is EntrepriseActions.ModifierChampNom -> modifierNom(action.nom)
+            is EntrepriseActions.ModifierChampRole -> modifierRole(action.role)
+            is EntrepriseActions.ModifierChampCourriel -> modifierCourriel(action.courriel)
+            is EntrepriseActions.ModifierChampEquipe -> modifierEquipe(action.equipe)
+            is EntrepriseActions.ModifierChampSalaire -> modifierSalaire(action.salaire)
         }
     }
 
@@ -146,6 +152,61 @@ class EntrepriseViewModel: ViewModel() {
         }
     }
 
+    private fun modifierPrenom(prenom: String) {
+        _uiState.update {
+            it.copy(
+                champPrenom = prenom
+            )
+        }
+    }
+
+    private fun modifierNom(nom: String) {
+        _uiState.update {
+            it.copy(
+                champNom = nom
+            )
+        }
+    }
+
+    private fun modifierCourriel(courriel: String) {
+        _uiState.update {
+            it.copy(
+                champCourriel = courriel
+            )
+        }
+    }
+
+    private fun modifierRole(role: String) {
+        _uiState.update {
+            it.copy(
+                champRole = role
+            )
+        }
+    }
+
+    private fun modifierEquipe(equipe: Equipe) {
+        _uiState.update {
+            it.copy(
+                equipeChoisie = equipe
+            )
+        }
+    }
+
+    private fun modifierSalaire(salaire: String) {
+        try {
+            if(salaire.all { it.isDigit() }) {
+                _uiState.update {
+                    it.copy(
+                        champSalaire = salaire.toInt()
+                    )
+                }
+            }
+        } catch (e: NullPointerException) {
+            Log.e("ViewModel_modifierSalaire", "Chaîne salaure vide: ${e.message}")
+        }
+
+    }
+
     /**
      * TODO : Compléter
      * Fonction qui gère l'ajout ou la modification d'un employé dans la base de données.
@@ -153,6 +214,47 @@ class EntrepriseViewModel: ViewModel() {
      * à quelconque endroit dans le code.
      */
     private fun soumettreFormulaire() {
+        if(_uiState.value.employeId.isNullOrBlank()) {
+            val employeAjout = EmployeAjout (
+                prenom = _uiState.value.champPrenom,
+                nom = _uiState.value.champNom,
+                courriel = _uiState.value.champCourriel,
+                salaire = _uiState.value.champSalaire,
+                role = _uiState.value.champRole,
+                equipeId = _uiState.value.equipeChoisie?.id ?: null,
+                actif = true
+            )
 
+            try {
+                viewModelScope.launch {
+                    SupabaseClient.ajouterEmploye(employeAjout)
+                    resetFormulaire()
+                    changerEcran("Employés")
+                }
+            } catch (e: Exception) {
+                Log.e("ViewModel_soumettreFormulaire", "Erreur lors de l'ajout ${e.message}")
+            }
+        }
+        else {
+            val employe = Employe (
+                id = _uiState.value.employeId,
+                prenom = _uiState.value.champPrenom,
+                nom = _uiState.value.champNom,
+                courriel = _uiState.value.champCourriel,
+                salaire = _uiState.value.champSalaire,
+                role = _uiState.value.champRole,
+                equipeId = _uiState.value.equipeChoisie?.id ?: null,
+                actif = true
+            )
+            try {
+                viewModelScope.launch {
+                    SupabaseClient.modifierEmploye(employe)
+                    resetFormulaire()
+                    changerEcran("Employés")
+                }
+            } catch (e: Exception) {
+                Log.e("ViewModel_soumettreFormulaire", "Erreur lors de la modification ${e.message}")
+            }
+        }
     }
 }

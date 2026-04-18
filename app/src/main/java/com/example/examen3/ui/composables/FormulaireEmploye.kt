@@ -55,7 +55,7 @@ fun FormulaireEmploye(
         OutlinedTextField(
             value = state.champPrenom,
             onValueChange = {
-                // TODO gérer le changement d'état du formulaire
+                onAction(EntrepriseActions.ModifierChampPrenom(it))
             },
             // S'il y a une erreur changer à true
             isError = false,
@@ -71,7 +71,7 @@ fun FormulaireEmploye(
         OutlinedTextField(
             value = state.champNom,
             onValueChange = {
-                // TODO gérer le changement d'état du formulaire
+                onAction(EntrepriseActions.ModifierChampNom(it))
             },
             isError = false,
             label = {
@@ -86,7 +86,7 @@ fun FormulaireEmploye(
         OutlinedTextField(
             value = state.champCourriel,
             onValueChange = {
-                // TODO gérer le changement d'état du formulaire
+                onAction(EntrepriseActions.ModifierChampCourriel(it))
             },
             isError = false,
             label = {
@@ -104,7 +104,7 @@ fun FormulaireEmploye(
         OutlinedTextField(
             value = state.champRole,
             onValueChange = {
-                // TODO gérer le changement d'état du formulaire
+                onAction(EntrepriseActions.ModifierChampRole(it))
             },
             isError = false,
             label = {
@@ -119,7 +119,7 @@ fun FormulaireEmploye(
         OutlinedTextField(
             value = state.champSalaire.toString(),
             onValueChange = {
-                // TODO gérer le changement d'état du formulaire
+                onAction(EntrepriseActions.ModifierChampSalaire(it))
             },
             isError = false,
             label = {
@@ -162,7 +162,7 @@ fun FormulaireEmploye(
                     DropdownMenuItem(
                         text = { Text(equipe.nom) },
                         onClick = {
-                            // TODO gérer le changement d'état du formulaire, ne pas toucher à expanded
+                            onAction(EntrepriseActions.ModifierChampEquipe(equipe))
                             expanded = false
                         }
                     )
@@ -173,6 +173,7 @@ fun FormulaireEmploye(
         Button(
             onClick = {
                     // TODO Gérer le clic. S'assurer qu'on puisse ajouter ou modifier un employé avec ce formulaire seulement
+                    onAction(EntrepriseActions.SoumettreFormulaireEmploye)
                 },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(

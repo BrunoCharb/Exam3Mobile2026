@@ -29,6 +29,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil3.compose.rememberAsyncImagePainter
 import com.example.examen3.R
 import com.example.examen3.data.EntrepriseActions
 import com.example.examen3.data.modeles.Employe
@@ -131,7 +132,7 @@ fun CarteMembreEquipe(
             //  Conserver contentScale et modifier pour le style
 
             Image(
-                painter = painterResource(R.drawable.generic_avatar),
+                painter = rememberAsyncImagePainter(employe.photoUrl),
                 contentDescription = "${employe.prenom} ${employe.nom}",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

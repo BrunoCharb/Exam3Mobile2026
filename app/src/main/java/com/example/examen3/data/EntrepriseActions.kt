@@ -13,4 +13,11 @@ sealed interface EntrepriseActions {
 
     // TODO gérer les champs du formulaire
 
+    data class ModifierChampPrenom(val prenom: String): EntrepriseActions
+    data class ModifierChampNom(val nom: String): EntrepriseActions
+    data class ModifierChampCourriel(val courriel: String): EntrepriseActions
+    data class ModifierChampRole(val role: String): EntrepriseActions
+    data class ModifierChampSalaire(val salaire: String): EntrepriseActions
+    data class ModifierChampEquipe(val equipe: Equipe): EntrepriseActions
+
 }
