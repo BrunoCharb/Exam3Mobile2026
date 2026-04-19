@@ -25,19 +25,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
-import com.example.examen3.R
 import com.example.examen3.data.EntrepriseActions
 import com.example.examen3.data.modeles.Employe
-import com.example.examen3.data.modeles.EquipeAvecEmployes
+import com.example.examen3.data.modeles.Equipe
 
 @Composable
 fun EcranDetailsEquipe(
-    equipe: EquipeAvecEmployes?,
+    equipe: Equipe?,
     onAction: (EntrepriseActions) -> Unit,
     modifier: Modifier = Modifier
 ) {
