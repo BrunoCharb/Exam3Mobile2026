@@ -11,7 +11,3 @@ data class Equipe(
     val employes: List<Employe>
 )
 
-@Serializable
-data class EquipeNom(
-    val nom: String
-)

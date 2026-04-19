@@ -15,7 +15,12 @@ data class Employe(
     val salaire: Int,
     @SerialName("est_actif")
     val actif: Boolean,
+    @SerialName("url_photo_profil")
     val photoUrl: String?,
     val equipeNom: EquipeNom? = null
 )
 
+@Serializable
+data class EquipeNom(
+    val nom: String
+)

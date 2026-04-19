@@ -14,4 +14,5 @@ data class EmployeAjout(
     val salaire: Int,
     @SerialName("est_actif")
     val actif: Boolean,
+    val photoUrl: String
 )
