@@ -32,11 +32,11 @@ import androidx.compose.ui.unit.dp
 import com.example.examen3.R
 import com.example.examen3.data.EntrepriseActions
 import com.example.examen3.data.modeles.Employe
-import com.example.examen3.data.modeles.EquipeAvecEmployes
+import com.example.examen3.data.modeles.Equipe
 
 @Composable
 fun EcranDetailsEquipe(
-    equipe: EquipeAvecEmployes?,
+    equipe: Equipe?,
     onAction: (EntrepriseActions) -> Unit,
     modifier: Modifier = Modifier
 ) {

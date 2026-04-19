@@ -47,15 +47,7 @@ classDiagram
         - description: String
         + employes: List~Employe~
     }
-    class EquipeAvecEmployes {
-        - id: String
-        - nom: String
-        - departement: String
-        - description: String
-        + employes: List~Employe~
-    }
     Equipe --> Employe : contient
-    EquipeAvecEmployes --> Employe : contient
 ```
 
 ### Employe

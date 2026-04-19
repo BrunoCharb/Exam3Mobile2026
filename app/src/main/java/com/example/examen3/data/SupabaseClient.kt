@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.examen3.data.modeles.Employe
 import com.example.examen3.data.modeles.EmployeAjout
 import com.example.examen3.data.modeles.Equipe
-import com.example.examen3.data.modeles.EquipeAvecEmployes
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.from
@@ -77,7 +76,7 @@ object SupabaseClient {
         return emptyList()
     }
 
-    suspend fun getEquipeAvecEmployes(equipeId: String): EquipeAvecEmployes {
+    suspend fun getEquipeAvecEmployes(equipeId: String): Equipe {
         try {
             val equipe = client.from("equipes")
                 .select(
@@ -92,12 +91,12 @@ object SupabaseClient {
                         eq("id", equipeId)
                     }
                 }
-                .decodeSingle<EquipeAvecEmployes>()
+                .decodeSingle<Equipe>()
             return equipe
         } catch (e: kotlin.Exception) {
             Log.e("SupabaseClient_getEquipeAvecEmployes", e.message.toString())
         }
-        return EquipeAvecEmployes("Erreur", "Erreur", "Erreur", "Erreur", emptyList())
+        return Equipe("Erreur", "Erreur", "Erreur", "Erreur", emptyList())
     }
     // ---- FIN de section de récupération des données
 
