@@ -76,7 +76,7 @@ class EntrepriseViewModel: ViewModel() {
                     champRole = employe?.role ?: "",
                     champPrenom = employe?.prenom ?: "",
                     champNom = employe?.nom ?: "",
-                    equipeChoisie = equipe ?:  null,
+                    equipeChoisie = equipe,
                 )
             }
         }
@@ -221,8 +221,9 @@ class EntrepriseViewModel: ViewModel() {
                 courriel = _uiState.value.champCourriel,
                 salaire = _uiState.value.champSalaire,
                 role = _uiState.value.champRole,
-                equipeId = _uiState.value.equipeChoisie?.id ?: null,
-                actif = true
+                equipeId = _uiState.value.equipeChoisie?.id,
+                actif = true,
+                photoUrl = "https://picsum.photos/seed/${_uiState.value.champPrenom}-${_uiState.value.champNom}/200"
             )
 
             try {
@@ -243,7 +244,7 @@ class EntrepriseViewModel: ViewModel() {
                 courriel = _uiState.value.champCourriel,
                 salaire = _uiState.value.champSalaire,
                 role = _uiState.value.champRole,
-                equipeId = _uiState.value.equipeChoisie?.id ?: null,
+                equipeId = _uiState.value.equipeChoisie?.id,
                 actif = true
             )
             try {
