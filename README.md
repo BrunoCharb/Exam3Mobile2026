@@ -1,4 +1,4 @@
-# Examen : Introduction au développement Android (15%)
+# Examen 3 : Application Android et Supabase (15%)
 
 ## Objectif(s)
 - Démontrer la capacité à programmer un prototype d'application Android qui manipule des données provenant d'une base de données Supabase.
@@ -6,9 +6,9 @@
 ## Éléments de compétence visé(s)
 - Analyser le projet de développement de l'application
 - Préparer l'environnement de développement informatique
-- Programmer l'interface mobile
-- Programmer la logique applicative du côté client
-- Contrôler la qualité de l'application
+- Programmer l'interface graphique
+- Programmer la logique applicative
+- Rédiger la documentation
 
 ## Modalités de l'évaluation
 - Il s'agit d'un travail individuel.
@@ -66,18 +66,19 @@ classDiagram
 - [ ] Compléter la méthode `ajouterEmploye` dans `SupabaseClient` pour insérer un nouvel employé dans la base de données.
   - **N.B.** une classe `EmployeAjout` a déjà été créée pour vous.  
 - [ ] Compléter la méthode `modifierEmploye` dans `SupabaseClient` pour mettre à jour un employé existant dans la base de données.
-- [ ] Compléter la méthode `soumettreFormulaire` dans `EntrepriseViewModel` pour gérer l'ajout **ou** la modification d'un employé selon le contexte (présence ou non d'un `employeId`). Après soumission, l'application doit retourner à la liste des employés.
+- [ ] Compléter la méthode `soumettreFormulaire` dans `EntrepriseViewModel` pour gérer l'ajout **ou** la modification d'un employé selon le contexte (présence ou non d'un `employeId`). Après soumission, l'application doit retourner à la liste des employés et le formulaire réinitialisé.
   - Pour la phpto de profil, vous devez insérer l'URL qui respecte le format suivant: https://picsum.photos/seed/prénom-nom/200 . **Ne pas l'ajouter au formulaire.** 
-- [ ] Gérer les changements de valeur de chaque champ du formulaire dans `FormulaireEmploye` en envoyant les bonnes actions au ViewModel. Ajouter les actions manquantes dans `EntrepriseActions` si nécessaire.
+- [ ] Gérer les changements de valeur de chaque champ du formulaire dans `FormulaireEmploye` en envoyant les bonnes actions au ViewModel. Ajouter les actions et variables d'état manquantes si nécessaire.
 - [ ] Gérer la sélection d'une équipe dans le menu déroulant du formulaire.
 - [ ] Gérer le clic sur le bouton **Enregistrer** du formulaire pour déclencher la soumission.
 - [ ] Afficher l'image de profil de l'employé à partir de son URL dans `CarteEmploye` (liste des employés) et dans `CarteMembreEquipe` (détails d'une équipe). Conserver le `contentScale` et le `modifier` existants pour le style.
 - [ ] Compléter la récupération des employés (`getEmployes`) pour également récupérer le **nom de l'équipe** de chaque employé à l'aide de la relation dans la base de données Supabase (jointure).
+- [ ] Rédiger la documentation de toutes les méthodes ajoutées
 
 ## Grille de correction
 
-| **Élément de compétence**               | **Éléments évalués**                                                                                                                          | **Pondération** |
-|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| Programmer la logique applicative       | Récupération correcte des données avec relation (nom d'équipe). Ajout et modification d'un employé via Supabase. Logique du ViewModel complète (soumission, navigation). | 8               |
-| Programmer l'interface mobile           | Gestion correcte des champs du formulaire et de leurs états. Affichage des images de profil. Utilisation appropriée des composables Compose.  | 5               |
-| Contrôler la qualité de l'application   | Application fonctionnelle et utilisable de bout en bout dans le navigateur/émulateur.                                                         | 2               |
+| **Élément de compétence**                                                | **Éléments évalués**                                                                                                                                                                                                                                       | **Pondération** |
+|--------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| Programmer la logique applicative (00SS.5)                               | Récupération correcte des données avec relation (nom d'équipe). Ajout et modification d'un employé via Supabase (configuration du client Supabase). Logique du ViewModel complète (soumission, navigation). Qualité du code (respect des bonnes pratiques) | 8               |
+| Programmer l'interface graphique et gestion de l'état (00SS.4)           | Gestion correcte des champs du formulaire et de leurs états. Affichage des images de profil. Utilisation appropriée des composables Compose.                                                                                                               | 5               |
+| Rédiger la documentation de l'application et qualité du français (00SS.8 | Rédaction correcte de la documentation et utilisation adéquate du français écrit.                                                                                                                                                                          | 2               |

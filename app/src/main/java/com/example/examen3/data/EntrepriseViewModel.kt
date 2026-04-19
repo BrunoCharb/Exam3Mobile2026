@@ -30,11 +30,19 @@ class EntrepriseViewModel: ViewModel() {
         }
     }
 
+    /**
+     * Fonction qui affiche la liste de tous les employés
+     * Récupère les employés de la base de données et modifie l'écran actif.
+     */
     private fun afficherListeEmployes() {
         getAllEmployes()
         changerEcran("Employés")
     }
 
+    /**
+     * Fonction qui permet d'afficher toutes les équipes.
+     * Récupères les équipes de la base de données et change l'écran actif.
+     */
     private fun afficherListeEquipes() {
         viewModelScope.launch {
             getAllEquipes()
@@ -43,6 +51,10 @@ class EntrepriseViewModel: ViewModel() {
 
     }
 
+    /**
+     * Fonction qui permet d'afficher les détails d'une équipe
+     * Récupère l'équipe et modifie l'écran actif.
+     */
     private fun afficherDetailsEquipe(id: String) {
         getEquipe(id)
         changerEcran("Détails")
@@ -77,6 +89,11 @@ class EntrepriseViewModel: ViewModel() {
 
     }
 
+    /**
+     * Fonction qui permet d'assurer la navigation dans l'application en modifiant la variable d'état
+     * ecranActif
+     * @param ecran: Le nom de l'écran à afficher
+     */
     private fun changerEcran(ecran: String) {
         _uiState.update {
             it.copy(
@@ -86,6 +103,9 @@ class EntrepriseViewModel: ViewModel() {
     }
 
     // Appels à la base de données
+    /**
+     * Fonction qui récupère l'ensemble des employés stockés dans la base de données.
+     */
     private fun getAllEmployes() {
         try {
             viewModelScope.launch {
@@ -101,6 +121,9 @@ class EntrepriseViewModel: ViewModel() {
         }
     }
 
+    /**
+     * Fonction qui récupère l'ensemble des équipes de la base de données.
+     */
     private suspend fun getAllEquipes() {
         try {
             val equipes = SupabaseClient.getEquipes()
@@ -114,6 +137,10 @@ class EntrepriseViewModel: ViewModel() {
         }
     }
 
+    /**
+     * Fonction qui récupère une équipe spécifique de la base de données
+     * @param id: l'identifiant unique de l'équipe
+     */
     private fun getEquipe(id: String) {
         try {
             viewModelScope.launch {

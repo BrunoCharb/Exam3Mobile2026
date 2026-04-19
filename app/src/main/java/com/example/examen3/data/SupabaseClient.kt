@@ -55,6 +55,9 @@ object SupabaseClient {
     }
 
     // Récupération de données ---- AUCUNE MODIFICATION NÉCESSAIRE DANS CETTE SECTION
+    /**
+     * Fonction qui récupère toutes les équipes de la base de données
+     */
     suspend fun getEquipes(): List<Equipe> {
         try {
             val equipes = client.from("equipes")
@@ -76,6 +79,10 @@ object SupabaseClient {
         return emptyList()
     }
 
+    /**
+     * Fonction qui récupère une équipe spécifique de la base de données
+     * @param equipeId: L'identifiant unique de l'équipe
+     */
     suspend fun getEquipeAvecEmployes(equipeId: String): Equipe {
         try {
             val equipe = client.from("equipes")
