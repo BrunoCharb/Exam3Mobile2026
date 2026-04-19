@@ -15,7 +15,7 @@ data class Employe(
     val salaire: Int,
     @SerialName("est_actif")
     val actif: Boolean,
-    val photoUrl: String = "",
+    val photoUrl: String?,
     val equipeNom: EquipeNom? = null
 )
 

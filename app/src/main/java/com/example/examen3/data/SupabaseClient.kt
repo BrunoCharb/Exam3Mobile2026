@@ -26,20 +26,25 @@ object SupabaseClient {
         install(Postgrest)
     }
 
-    // Récupération de données ---- AUCUNE MODIFICATION NÉCESSAIRE DANS CETTE SECTION
+
+    // Manipulation des données
+
+    suspend fun ajouterEmploye(employe: EmployeAjout) {
+        // TODO compléter
+    }
+
+    suspend fun modifierEmploye(employe: Employe) {
+        // TODO compléter
+    }
+
+    /**
+     * Fonction qui récupère tous les employés de la base de données.
+     * TODO modifier la fonction pour également récupérer le nom de l'équipe de l'employé à l'aide de la relation dans la BD
+     */
     suspend fun getEmployes(): List<Employe> {
         try {
             val employes = client.from("employes")
-                .select(
-                    columns = Columns.raw(
-                        """
-                        *,
-                        equipeNom:equipes(
-                            nom
-                        )
-                    """.trimIndent()
-                    )
-                ) {
+                .select() {
                     order("nom", Order.ASCENDING)
                 }
                 .decodeList<Employe>()
@@ -50,6 +55,7 @@ object SupabaseClient {
         return emptyList()
     }
 
+    // Récupération de données ---- AUCUNE MODIFICATION NÉCESSAIRE DANS CETTE SECTION
     suspend fun getEquipes(): List<Equipe> {
         try {
             val equipes = client.from("equipes")
@@ -94,16 +100,6 @@ object SupabaseClient {
         return EquipeAvecEmployes("Erreur", "Erreur", "Erreur", "Erreur", emptyList())
     }
     // ---- FIN de section de récupération des données
-
-    // Manipulation des données
-
-    suspend fun ajouterEmploye(employe: EmployeAjout) {
-        // TODO compléter
-    }
-
-    suspend fun modifierEmploye(employe: Employe) {
-        // TODO compléter
-    }
 
 
 }
